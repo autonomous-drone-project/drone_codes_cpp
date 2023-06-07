@@ -1,0 +1,154 @@
+ISO:
+	Raspberry Pi OS (64-bit) / Raspberry Pi OS Lite -> Arquive
+	  	- raspios_lite_arm64-2021-05-28/
+
+	# https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-05-28/
+
+User: pi
+Pass: raspberry
+
+# https://github.com/stephendade/apsync-Kakute
+
+
+Config the Rasp:
+
+	$ sudo raspi-config
+	
+	# ** Configure Keyboard-layout
+	# ** Configure Time-zone
+	# ** Configure Wifi
+	# ** In case wifi dont show
+
+		$ sudo nano /etc/wpa_supplicant/wpa_suppliccant.conf
+
+		# ** Set
+			network={
+				ssid="wifi-id"
+				psk="wifi-pass"
+				scan_ssid=1
+			}
+
+	# ** Enable SSH
+	# ** Enable Camera
+	# ** Enable Serial - 1)NO - 2)YES
+	# ** Finish
+
+
+
+
+SWAP MEMORY
+Probaly you may solve this problem by incresing your swap memory.
+Fisrt turn off your swap memory
+
+	$ sudo dphus-swapfile swapoff
+
+
+Go to swapfile and change the amount of swap-memory
+
+	$  sudo nano /etc/dphus-swapfile
+
+
+The default config swapsize is 100(1Mi), you can change that to 2048 (2Gi)
+
+	# CONF_SWAPSIZE=100
+	CONF_SWAPSIZE=2048
+
+After you can setup the memory, and turn on the swapmemory
+
+	$ sudo dphus-swapfile setup
+	$ sudo dphus-swapfile swapon
+
+
+Upgrade OS:
+	$ sudo apt update && sudo apt upgrade -y
+	
+
+Connect the Rasp in PC:
+
+	$ ifconfig
+	# ** see the ip
+
+	$ sudo poweroff
+
+	# In the PC:
+		$ ssh pi@<ip>
+
+
+Swap memory:
+
+	$ sudo dphys-swapfile swapoff
+	$ sudo nano /etc/dphys-swapfile
+
+	# ** Set:
+		CONF_SWAPSIZE=2048
+	
+	$ sudo dphus-swapfile setup
+	$ sudo dphus-swapfile swapon
+
+
+Active the X11 tunneling:
+	$ sudo nano /ect/shh/sshd_config
+
+	# ** Set:
+		X11Forwarding yes
+		X11DisplayOffset 10
+		X11UseLocalhost yes
+
+
+OPTIONAL: Install 'samba' for share and manage folders with the Ground Station WINDOWNS OS
+
+
+Configure the serial port:
+
+	# ** Check if the serial port activated:
+	$ ls /dev/tty*
+	
+	# ** Speed up the UART to enable fast connection with the FCU
+	$ sudo nano /boot/config.txt
+	
+	# ** Set:
+		enable_uart=1
+		init_uart_clock=64000000
+
+	$sudo reboot
+
+
+
+## Add required packages for general
+
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install git screen python3 python3-dev python3-pip python3-matplotlib -y
+
+sudo apt install -y libxml2-dev libxslt1.1 libxslt1-dev libz-dev
+
+sudo apt install python-serial python-wxgtk3.0 python-wxtools python-lxml python-scipy python-opencv ccache gawk python-pip python-pexpect
+
+sudo pip3 install --upgrade pip
+
+sudo pip3 install pyserial future pymavlink mavproxy --user
+
+sudo apt update && sudo apt upgrade -y
+
+sudo reboot
+
+
+
+## main2.sh
+
+~/apsync-Kakute/mavlink-router.sh
+~/apsync-Kakute/apweb.sh
+~/apsync-Kakute/apstreamline.sh
+~/apsync-Kakute/use_networkmanager.sh
+
+
+
+## ROS NOETIC - MAVROS
+
+	http://wiki.ros.org/noetic/Installation/Debian
+
+## SETUP Catkin
+
+https://github.com/Intelligent-Quads/iq_tutorials/blob/master/docs/installing_ros_20_04.md
+
+
