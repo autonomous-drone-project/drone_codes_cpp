@@ -5,6 +5,7 @@
 #include <sensor_msgs/image_encodings.h>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include "../include/gnc_functions.hpp" // GNC API with all ROS functions
 
 // Adiciona as bibliotecas do YOLO
 #include <darknet_ros_msgs/BoundingBoxes.h>

@@ -1,6 +1,6 @@
 /* INCOMPLETO AINDA.. ERRO NA HR DE COMPILAR.. */
 
-#include <gnc_functions.hpp> // GNC API with all ROS functions
+#include "../include/gnc_functions.hpp" // GNC API with all ROS functions
 #include <mavlink/common/mavlink.h> // MavLink 
 
 

@@ -1,4 +1,4 @@
-#include <gnc_functions.hpp> // GNC API with all ROS functions
+#include "../include/gnc_functions.hpp" // GNC API with all ROS functions
 
 void set_waypoints()
 {
