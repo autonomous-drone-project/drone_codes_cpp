@@ -3,16 +3,9 @@
 #include <gnc_functions.hpp> // GNC API with all ROS functions
 #include <mavlink/common/mavlink.h> // MavLink 
 
-// Estrutura para armazenar os waypoints personalizados
-struct Waypoint {
-    float x;
-    float y;
-    float z;
-    float psi;
-};
 
 // Função para lidar com as mensagens MAVLink recebidas
-void handleMavlinkMessage(const mavlink_message_t& message, std::vector<Waypoint>& waypointList) {
+void handleMavlinkMessage(const mavlink_message_t &message, std::vector<gnc_api_waypoint> &waypointList) {
     switch (message.msgid) {
         case MAVLINK_MSG_ID_MISSION_ITEM: {
             mavlink_mission_item_t missionItem;
@@ -25,26 +18,28 @@ void handleMavlinkMessage(const mavlink_message_t& message, std::vector<Waypoint
             float psi = missionItem.param4;
 
             // Armazenar o waypoint na lista
-            Waypoint waypoint {x, y, z, psi};
+            gnc_api_waypoint waypoint;
+            waypoint.x = x;
+            waypoint.y = y;
+            waypoint.z = z;
+            waypoint.psi = psi;
             waypointList.push_back(waypoint);
 
             break;
         }
-        // Outros casos para lidar com diferentes tipos de mensagens MAVLink, se necessário
     }
 }
 
+
 // Função para configurar a comunicação com o Mission Planner
-void setupCommunication() {
+void setupCommunication(std::vector<Waypoint> &waypointList) {
     // Configurar a comunicação com o Mission Planner (exemplo usando conexão serial)
     // ...
 
     // Loop principal para receber e processar as mensagens MAVLink
-    std::vector<Waypoint> waypointList;
-    while (ros::ok()) {
+    while (ros::ok()){
         // Receber a próxima mensagem MAVLink
         mavlink_message_t message;
-        // ...
 
         // Lidar com a mensagem recebida
         handleMavlinkMessage(message, waypointList);
@@ -65,15 +60,15 @@ void setupCommunication() {
     }
 }
 
-
 void get_waypoints()
 {
     wait4connect();
     wait4start();
     initialize_local_frame();
-    setupCommunication();
 
-    set_waypoints();
+    std::vector<gnc_api_waypoint> waypointList;
+    setupCommunication(waypointList);
+
 }
 
 int main(int argc, char** argv)
