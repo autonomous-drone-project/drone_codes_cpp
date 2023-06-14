@@ -1,35 +1,39 @@
+#include <cmath>
+#include <math.h>
+#include <unistd.h>
+#include <iostream>
+#include <string>
+#include <vector>
+
+#include <ros/ros.h>
+#include <ros/duration.h>
+
+#include <std_msgs/Float64.h>
+#include <std_msgs/String.h>
+
+#include <geometry_msgs/Pose.h>
+#include <geometry_msgs/PoseStamped.h>
+
+#include <nav_msgs/Odometry.h>
+
 #include <mavros_msgs/CommandTOL.h>
 #include <mavros_msgs/CommandLong.h>
 #include <mavros_msgs/WaypointPull.h>
 #include <mavros_msgs/WaypointPush.h>
 #include <mavros_msgs/WaypointSetCurrent.h>
 #include <mavros_msgs/GlobalPositionTarget.h>
-#include <geographic_msgs/GeoPoseStamped.h>
 #include <mavros_msgs/State.h>
-#include <nav_msgs/Odometry.h>
-#include <geometry_msgs/Pose.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <cmath>
-#include <math.h>
-#include <ros/ros.h>
-#include <std_msgs/Float64.h>
-#include <std_msgs/String.h>
 #include <mavros_msgs/CommandBool.h>
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/PositionTarget.h>
-#include <unistd.h>
-#include <vector>
-#include <ros/duration.h>
-#include <iostream>
-#include <string>
 
+#include <geographic_msgs/GeoPoseStamped.h>
 
 
 /**
 \defgroup control_functions
 This module is designed to make high level control programming more simple. 
 */
-
 
 mavros_msgs::State current_state_g;
 nav_msgs::Odometry current_pose_g;
