@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(drone_code_cpp)
+project(drone_codes_cpp)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
