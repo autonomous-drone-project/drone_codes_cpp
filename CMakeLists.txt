@@ -211,6 +211,9 @@ include_directories(
 add_executable(square_flight src/square_flight.cpp)
 target_link_libraries(square_flight ${catkin_LIBRARIES})
 
+add_executable(line_flight src/line_flight.cpp)
+target_link_libraries(line_flight ${catkin_LIBRARIES})
+
 add_executable(custom_wp src/custom_wp.cpp)
 target_link_libraries(custom_wp ${catkin_LIBRARIES})
 
