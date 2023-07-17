@@ -3,11 +3,11 @@
 void fight()
 {
     // Define a posição x do ponto de destino
-    double destX = 1;  // Coordenada x do ponto de destino
+    double destX = 2;  // Coordenada x do ponto de destino
 
     set_speed(0.3); // Velocidade linear desejada em m/s
 
-    takeoff(1);
+    takeoff(1.7);
 
     while (ros::ok())
     {
