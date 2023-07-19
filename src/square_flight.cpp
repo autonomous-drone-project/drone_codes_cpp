@@ -51,7 +51,7 @@ void takeoff_and_wp()
     initialize_local_frame();
 
     // Velocidade linear desejada em m/s
-    set_speed(0,3);
+    set_speed(0.3);
 
     // Realiza a decolagem com uma altitude de 3 metros
     takeoff(2);
