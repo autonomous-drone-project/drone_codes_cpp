@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>drone_code_cpp</name>
+  <name>drone_codes_cpp</name>
   <version>0.0.0</version>
   <description>The drone_code_cpp package</description>
 
