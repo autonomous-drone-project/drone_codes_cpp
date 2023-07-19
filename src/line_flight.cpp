@@ -14,8 +14,10 @@ void fight()
     {
         ros::spinOnce();
 
+        geometry_msgs::Point current_pos = get_current_location();
+        
         // Verifica se chegou ao ponto de destino
-        if (get_current_position().x >= destX){
+        if (current_pos.x >= destX){
             // Todos os waypoints foram percorridos, realiza o pouso
             land();
             break;
