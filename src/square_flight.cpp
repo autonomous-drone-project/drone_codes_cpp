@@ -10,9 +10,9 @@ void set_waypoints()
     std::vector<gnc_api_waypoint> waypointList = {
         // x, y, z, psi
         {0, 0, altitute, 0},      // Waypoint 1: x=0, y=0, z=2, psi=0
-        {2, 0, altitute, -90},    // Waypoint 2: x=2, y=0, z=2, psi=-90
-        {2, 2, altitute, 0},      // Waypoint 3: x=2, y=2, z=2, psi=0
-        {0, 2, altitute, 90},     // Waypoint 4: x=0, y=2, z=2, psi=90
+        {tam, 0, altitute, -90},    // Waypoint 2: x=2, y=0, z=2, psi=-90
+        {tam, tam, altitute, 0},      // Waypoint 3: x=2, y=2, z=2, psi=0
+        {0, tam, altitute, 90},     // Waypoint 4: x=0, y=2, z=2, psi=90
         {0, 0, altitute, 180},    // Waypoint 5: x=0, y=0, z=2, psi=180
         {0, 0, altitute, 0}       // Waypoint 6: x=0, y=0, z=2, psi=0
     };
