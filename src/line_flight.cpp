@@ -3,10 +3,10 @@
 void fight()
 {
     // Define a posição x do ponto de destino
-    double destX = 2;  // Coordenada x do ponto de destino
+    double destX = 4;  // Coordenada x do ponto de destino
     double altitute = 1.7;
 
-    set_speed(0.3); // Velocidade linear desejada em m/s
+    //set_speed(0.3); // Velocidade linear desejada em m/s
 
     takeoff(altitute);
 
