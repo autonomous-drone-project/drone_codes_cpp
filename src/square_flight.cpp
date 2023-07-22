@@ -20,7 +20,7 @@ void set_waypoints()
     // Velocidade linear desejada em m/s
     set_speed(0.1);
 
-    // Realiza a decolagem com uma altitude de 3 metros
+    // Realiza a decolagem com a altitude definida
     takeoff(altitute);
 
     int counter = 0;
